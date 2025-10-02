@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    background: #000;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.clock {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #fee;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 150px rgba(221, 96, 96, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.clock span {
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    inset: 12px;
+    text-align: center;
+}
+
+.clock span b {
+    display: inline-block;
+    transform: rotate(calc(-30deg * var(--i)));
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.clock::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Clock Hands */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    border-radius: 8px;
+    z-index: 8;
+    transform: translateX(-50%) rotate(0deg);
+}
+
+.hour-hand {
+    width: 8px;
+    height: 70px;
+    background: linear-gradient(to top, red, #ff4444);
+    border-radius: 8px 8px 0 0;
+}
+
+.min-hand {
+    width: 6px;
+    height: 90px;
+    background: linear-gradient(to top, yellow, #ffff44);
+    border-radius: 6px 6px 0 0;
+}
+
+.sec-hand {
+    width: 3px;
+    height: 110px;
+    background: linear-gradient(to top, white, #eeeeee);
+    border-radius: 3px 3px 0 0;
+}
+
+/* Option 2: Inner Name */
+.inner-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    border-radius: 35px;
+    border: 2px solid rgba(255, 255, 255, 0.3); 
+    box-shadow: 0 0 20px rgba(221, 96, 96, 0.8);
+    z-index: 5;
+    text-shadow: 0 0 10px rgba(221, 96, 96, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+/* Digital Time Display */
+.digital-time {
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(221, 96, 96, 0.8);
+    text-align: center;
+    min-width: 200px;
+ 
+}
+
+/* Smooth transition for clock hands */
+.hand {
+    transition: transform 0.2s cubic-bezier(0.4, 2.3, 0.8, 1);
+}
